@@ -1,18 +1,150 @@
 @import 'tailwindcss';
 
+/* ------------------------------------------------------------------ */
+/* Grey Ivy theme tokens (Tailwind v4)                                */
+/* Warm graphite + ivory, soft stone/taupe, a restrained champagne    */
+/* accent and a whisper of sage — quiet, architectural luxury.        */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-ink: #191a16; /* deepest warm near-black */
+  --color-graphite: #22231e; /* primary dark */
+  --color-charcoal: #2d2e27; /* lifted dark for panels */
+
+  --color-ivory: #f6f3ec; /* warm off-white (primary light) */
+  --color-stone: #ece6da;
+  --color-sand: #e2d9c9;
+  --color-mist: #d6cfc1;
+
+  --color-taupe: #9a8d7a; /* muted labels */
+  --color-slate: #565146; /* body text on light (warm grey) */
+
+  --color-champagne: #bfa06a; /* soft champagne gold accent */
+  --color-champagne-soft: #d8c196;
+  --color-champagne-dark: #9a7f4c; /* legible gold on light */
+
+  --color-sage: #5f6a52; /* optional subtle ivy-green */
+
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --shadow-soft: 0 24px 60px -34px rgba(25, 26, 22, 0.45);
+  --shadow-lift: 0 40px 90px -40px rgba(25, 26, 22, 0.55);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
 :root {
   color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.002em;
+}
+
+/* Restrained uppercase label */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-ink);
+}
+
+/* Thin champagne divider */
+.hairline {
+  height: 1px;
+  width: 3.5rem;
+  background: linear-gradient(90deg, var(--color-champagne), transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll-reveal (JS toggles .is-visible)                             */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Slow cinematic zoom for hero imagery */
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 22s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-slow-zoom {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
