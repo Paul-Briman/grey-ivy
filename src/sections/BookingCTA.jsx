@@ -7,7 +7,7 @@ import { PHONE_DISPLAY, PHONE_TEL } from '../lib/contact'
 export default function BookingCTA() {
   return (
     <section className="relative overflow-hidden bg-ink text-ivory">
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={ctaImage}
           alt=""
@@ -16,10 +16,10 @@ export default function BookingCTA() {
           className="h-full w-full object-cover"
           style={{ objectPosition: '50% 40%' }}
         />
-        <div className="absolute inset-0 bg-ink/82" />
+        <div className="absolute inset-0 bg-ink/78" />
       </div>
 
-      <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8 sm:py-32">
+      <div className="relative z-10 mx-auto max-w-3xl px-5 py-24 text-center sm:px-8 sm:py-32">
         <Reveal className="flex flex-col items-center gap-4">
           <span className="eyebrow text-champagne-soft">Reservations</span>
           <span className="hairline mx-auto" aria-hidden="true" />

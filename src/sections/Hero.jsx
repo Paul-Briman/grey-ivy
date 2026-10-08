@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink">
       {/* Cinematic image */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={heroImage}
           alt="The elegant living room at Grey Ivy Luxury Apartments, Guzape — marble feature wall, statement chandelier and grey seating"
@@ -18,11 +18,11 @@ export default function Hero() {
           style={{ objectPosition: '50% 45%' }}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/45 to-ink/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/40 to-ink/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/25" />
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pb-28 pt-32 sm:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pb-28 pt-32 sm:px-8">
         <div className="reveal is-visible max-w-2xl">
           <div className="flex items-center gap-3 text-champagne-soft">
             <span className="hairline" aria-hidden="true" />
